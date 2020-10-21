@@ -27,7 +27,14 @@ function App() {
           type: "SET_USER",
           user: user,
         });
+
         // console.log(user, "hey im fucking user");
+      });
+      spotify.getUserPlaylists().then((playlists) => {
+        dispatch({
+          type: "SET_PLAYLISTS",
+          playlists: playlists,
+        });
       });
     }
     // console.log("i have a tokken", token);

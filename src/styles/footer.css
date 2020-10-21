@@ -1,0 +1,26 @@
+.footer {
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  position: fixed;
+  height: 65px;
+  width: 97%;
+  background: #282828;
+  padding: 20px;
+}
+
+.footer-left {
+  flex: 0.3;
+}
+.footer-center {
+  flex: 0.4;
+  padding: 0 100px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-right {
+  flex: 0.3;
+}
