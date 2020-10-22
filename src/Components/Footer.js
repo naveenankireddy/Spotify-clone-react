@@ -5,12 +5,16 @@ import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import RepeatIcon from "@material-ui/icons/Repeat";
+import { Grid, Slider } from "@material-ui/core";
+import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
+import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 
 function Footer() {
   return (
     <div className="footer">
       <div className="footer-left">
-        <p>footer left</p>
+        <p>one</p>
+        <p>Two</p>
       </div>
       <div className="footer-center">
         <ShuffleIcon className="footer-green" />
@@ -20,7 +24,17 @@ function Footer() {
         <RepeatIcon className="footer-green" />
       </div>
       <div className="footer-right">
-        <p>footer right</p>
+        <Grid container spacing={2}>
+          <Grid item>
+            <PlaylistPlayIcon />
+          </Grid>
+          <Grid item>
+            <VolumeDownIcon />
+          </Grid>
+          <Grid item xs>
+            <Slider aria-labelledby="continuous-slider" />
+          </Grid>
+        </Grid>
       </div>
     </div>
   );
