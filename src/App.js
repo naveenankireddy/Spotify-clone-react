@@ -22,6 +22,17 @@ function App() {
       });
       // setToken(token);
       spotify.setAccessToken(token);
+      spotify.getMyTopArtists().then((response) =>
+        dispatch({
+          type: "SET_TOP_ARTISTS",
+          top_artists: response,
+        })
+      );
+
+      dispatch({
+        type: "SET_SPOTIFY",
+        spotify: spotify,
+      });
       spotify.getMe().then((user) => {
         dispatch({
           type: "SET_USER",
@@ -41,6 +52,7 @@ function App() {
           type: "SET_DISCOVER_WEEKLY",
           discover_weekly: response,
         });
+        console.log(response);
       });
     }
     // console.log("i have a tokken", token);

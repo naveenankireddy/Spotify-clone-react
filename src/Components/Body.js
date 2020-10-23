@@ -6,8 +6,46 @@ import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import SongRow from "./SongRow";
-function Body() {
+function Body({ spotify }) {
   const [{ discover_weekly }, dispatch] = useStateProviderValue();
+
+  const playPlaylist = (id) => {
+    spotify
+      .play({
+        context_uri: `spotify:playlist:0RYwYsOXR9KxeUXYnlODxn`,
+      })
+      .then((res) => {
+        spotify.getMyCurrentPlayingTrack().then((r) => {
+          dispatch({
+            type: "SET_ITEM",
+            item: r.item,
+          });
+          dispatch({
+            type: "SET_PLAYING",
+            playing: true,
+          });
+        });
+      });
+  };
+
+  const playSong = (id) => {
+    spotify
+      .play({
+        uris: [`spotify:track:${id}`],
+      })
+      .then((res) => {
+        spotify.getMyCurrentPlayingTrack().then((r) => {
+          dispatch({
+            type: "SET_ITEM",
+            item: r.item,
+          });
+          dispatch({
+            type: "SET_PLAYING",
+            playing: true,
+          });
+        });
+      });
+  };
   return (
     <div className="body">
       <Header />
@@ -21,12 +59,15 @@ function Body() {
       </div>
       <div className="body-songs">
         <div className="body-icons">
-          <PlayCircleOutlineIcon className="body-shuffle" />
+          <PlayCircleOutlineIcon
+            className="body-shuffle"
+            onClick={playPlaylist}
+          />
           <FavoriteIcon fontSize="large" />
           <MoreHorizIcon />
         </div>
         {discover_weekly?.tracks.items.map((item) => (
-          <SongRow track={item.track} />
+          <SongRow playSong={playSong} track={item.track} />
         ))}
       </div>
     </div>

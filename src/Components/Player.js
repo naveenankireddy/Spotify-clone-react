@@ -3,14 +3,14 @@ import Footer from "./Footer";
 import Body from "./Body";
 import Sidebar from "./Sidebar";
 import "../styles/player.css";
-function Player() {
+function Player({ spotify }) {
   return (
     <div className="player">
       <div className="player-body">
         <Sidebar />
-        <Body />
+        <Body spotify={spotify} />
       </div>
-      <Footer />
+      <Footer spotify={spotify} />
     </div>
   );
 }
